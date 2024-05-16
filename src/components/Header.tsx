@@ -12,6 +12,7 @@ interface stockProps {
 
 interface headerProps {
     handleAddToStockClick: (open: boolean, data: stockProps) => void;
+    call: boolean;
 }
 interface existingWatchListProp {
     id: number;
@@ -22,7 +23,7 @@ interface existingWatchListProp {
 type existingWatchListProps = existingWatchListProp[];
 
 const Header: React.FC<headerProps> = (props) => {
-    const { handleAddToStockClick } = props;
+    const { handleAddToStockClick, call } = props;
     const [existingWatchList, setExistingWatchList] =
         useState<existingWatchListProps>([]);
 
@@ -53,7 +54,8 @@ const Header: React.FC<headerProps> = (props) => {
 
     useEffect(() => {
         createNewWatchlistOrFetchWatchLists();
-    }, []);
+    }, [call]);
+
     return (
         <Box
             sx={{
@@ -76,7 +78,8 @@ const Header: React.FC<headerProps> = (props) => {
                     width: { md: 360, xs: "80%" },
                 }}
             >
-                <List
+                {existingWatchList.length === 0 && <Typography variant="body1">Your watchlist is empty add stocks</Typography>}
+                {existingWatchList.length > 0 && <List
                     sx={{
                         // width: "100%",
 
@@ -124,7 +127,7 @@ const Header: React.FC<headerProps> = (props) => {
                             <Divider />
                         </Box>
                     ))}
-                </List>
+                </List>}
             </Box>
         </Box>
     );

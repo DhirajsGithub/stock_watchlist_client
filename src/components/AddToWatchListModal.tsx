@@ -159,7 +159,7 @@ const AddToWatchListModal: React.FC<AddToWatchListModalProps> = (props) => {
                     onClick={() => setNewWatchListInput(true)}
                     endIcon={<PlaylistAddIcon />}
                 >
-                    Create a new wishlist
+                    Create a new watchlist
                 </Button>
                 {newWatchListInput && (
                     <Box>
