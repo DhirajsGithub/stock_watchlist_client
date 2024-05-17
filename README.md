@@ -34,8 +34,9 @@ Follow these instructions to set up the project locally.
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/DhirajsGithub/stock_watchlist_client
-    cd blendnet.ai
+    
+    git clone https://github.com/DhirajsGithub/stock_watchlist
+    cd stock_watchlist
     ```
 
 2. **Set up the backend:**
@@ -73,12 +74,16 @@ Follow these instructions to set up the project locally.
     python manage.py runserver
     ```
 
+
 3. **Set up the frontend:**
 
+    ```
+    git clone git clone https://github.com/DhirajsGithub/stock_watchlist_client
+    ```
     a. Navigate to the client directory:
 
     ```bash
-    cd ../client
+    cd stock_watchlist_client
     ```
 
     b. Install the frontend dependencies:
