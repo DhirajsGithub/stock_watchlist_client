@@ -1,7 +1,7 @@
 import { Box, CssBaseline, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import baseUrl from '../utils/baseUrl';
 
 interface stockProps {
@@ -50,6 +50,11 @@ const WatchList: React.FC = () => {
     useEffect(() => {
         getWatchListDetail()
     }, [id])
+    const navigate = useNavigate()
+
+    const handleOnClick = (sym: string) => {
+        navigate(`/stockDetail/${sym}`)
+    }
     return (
         <Box sx={{ padding: "10px 20px" }}>
             <CssBaseline />
@@ -59,7 +64,7 @@ const WatchList: React.FC = () => {
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 400 }} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
+                        <TableRow >
                             <TableCell>Stock Id</TableCell>
                             <TableCell align="right">Stock Symbol</TableCell>
                             <TableCell align="right">Stock Name</TableCell>
@@ -70,6 +75,7 @@ const WatchList: React.FC = () => {
                     <TableBody>
                         {stocksDetailList?.map((stock, index) => (
                             <TableRow
+                                onClick={() => handleOnClick(stock.symbol)}
                                 key={stock.symbol}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: "pointer" }}
                             >
