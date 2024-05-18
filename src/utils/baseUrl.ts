@@ -1,4 +1,4 @@
-const baseUrl = "http://127.0.0.1:8000"
+const baseUrl = "https://stock-watchlist.onrender.com"
 const alphaVantageUrl = "https://www.alphavantage.co"
 
 const alphaVantageApiKey = "5HXDH3Q7MZS98NCN"
